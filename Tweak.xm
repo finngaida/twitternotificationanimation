@@ -78,7 +78,6 @@ static BOOL switcher = NO;
     [icon removeFromSuperview];
     [self.view addSubview:icon];
     icon.alpha = 0;
-    icon.frame = CGRectMake(bg.frame.size.width / 2, bg.frame.size.height / 2, 0, 0);
     
     title.alpha = 0;
     title.frame = CGRectMake(origTitle.origin.x + iconWidth * 2, origTitle.origin.y + iconWidth, origTitle.size.width - iconWidth * 4, origTitle.size.height - iconWidth * 2);
@@ -96,6 +95,7 @@ static BOOL switcher = NO;
     } completion:^(BOOL finished) {
         
         [right removeFromSuperview];
+        icon.frame = CGRectMake(bg.frame.size.width / 2, bg.frame.size.height / 2, 0, 0);
         
         [UIView animateWithDuration:0.2 animations:^{
             icon.frame = CGRectMake(bg.frame.size.width / 2 - iconWidth / 2, bg.frame.size.height / 2 - iconWidth / 2, iconWidth, iconWidth);

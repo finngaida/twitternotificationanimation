@@ -122,7 +122,7 @@ static _UIViewControllerOneToOneTransitionContext *tc;
 }
 
 -(double)transitionDuration:(id)duration {
-    BOOL outgoing = MSHookIvar<UIView *>(tc, "_toView") == nil;
+    BOOL outgoing = NO; //MSHookIvar<UIView *>(tc, "_toView") == nil;
     
     return (outgoing) ? %orig : 0;
 }

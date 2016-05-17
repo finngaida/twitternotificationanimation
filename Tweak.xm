@@ -40,11 +40,6 @@
 @interface _UIViewControllerOneToOneTransitionContext
 -(UIView*)containerView;
 -(SBBannerContainerViewController*)presentedViewController;
--(BOOL)_isPresentation;
--(BOOL)_transitionIsCompleting;
--(BOOL)isAnimated;
-- (float)_percentOffset;
-- (int)_state;
 @end
 
 
@@ -55,7 +50,7 @@ static BOOL switcher = NO;
 
 -(void)animateTransition:(_UIViewControllerOneToOneTransitionContext*)tc {
     
-    if(!enabled || switcher) { %orig; return; }
+    if(!enabled || switcher) { %orig; return; }
     switcher = !switcher;
     
     _UIBackdropView *bg = [[self bannerContextView] backdrop];

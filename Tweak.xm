@@ -46,14 +46,14 @@
 
 
 static BOOL enabled = YES;
-static BOOL switcher = NO;
 
 %hook SBBannerContainerViewController
 
--(void)animateTransition:(_UIViewControllerOneToOneTransitionContext*)tc {
+-(void)animateTransition:(id)tc {
     
-    if(!enabled) { %orig; return; }
-    switcher = !switcher;
+    BOOL outgoing = MSHookIvar<UIView *>(tc, "_toView") == nil;
+    
+    if(!enabled || outgoing) { %orig; return; }
     
     _UIBackdropView *bg = [[self bannerContextView] backdrop];
     SBDefaultBannerView *contentView = MSHookIvar<SBDefaultBannerView *>([self bannerContextView], "_contentView");
@@ -103,11 +103,11 @@ static BOOL switcher = NO;
         } completion:^(BOOL finished) {
             
             [UIView animateWithDuration:0.5 animations:^{
-                icon.frame = CGRectMake(iconWidth / 2, icon.frame.origin.y, iconWidth, iconWidth);
+                //                icon.frame = CGRectMake(iconWidth / 2, icon.frame.origin.y, iconWidth, iconWidth);
+                icon.frame = origIcon;
             } completion:^(BOOL finished) {
                 
                 [UIView animateWithDuration:0.5 animations:^{
-                    icon.frame = origIcon;
                     title.frame = origTitle;
                     title.alpha = 1;
                     grabber.alpha = 1;
@@ -120,7 +120,9 @@ static BOOL switcher = NO;
 }
 
 -(double)transitionDuration:(id)duration {
-    return 0;
+    BOOL outgoing = MSHookIvar<UIView *>(tc, "_toView") == nil;
+    
+    return (outgoing) ? %orig : 0;
 }
 
 %end
@@ -129,7 +131,6 @@ static BOOL switcher = NO;
 %hook _UIViewControllerOneToOneTransitionContext
 
 - (void)completeTransition:(BOOL)arg1 {
-    %log();
     %orig;
 }
 

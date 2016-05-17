@@ -1,3 +1,4 @@
+#line 1 "Tweak.xm"
 #import <substrate.h>
 #import <UIKit/UIKit.h>
 #import <CoreGraphics/CoreGraphics.h>
@@ -51,11 +52,17 @@
 static BOOL enabled = YES;
 static BOOL switcher = NO;
 
-%hook SBBannerContainerViewController
+#include <logos/logos.h>
+#include <substrate.h>
+@class SBBannerContainerViewController; 
+static void (*_logos_orig$_ungrouped$SBBannerContainerViewController$animateTransition$)(SBBannerContainerViewController*, SEL, _UIViewControllerOneToOneTransitionContext*); static void _logos_method$_ungrouped$SBBannerContainerViewController$animateTransition$(SBBannerContainerViewController*, SEL, _UIViewControllerOneToOneTransitionContext*); 
 
--(void)animateTransition:(_UIViewControllerOneToOneTransitionContext*)tc {
+#line 54 "Tweak.xm"
+
+
+static void _logos_method$_ungrouped$SBBannerContainerViewController$animateTransition$(SBBannerContainerViewController* self, SEL _cmd, _UIViewControllerOneToOneTransitionContext* tc) {
     
-    if(!enabled || switcher) { %orig; return; }
+    if(!enabled || switcher) { _logos_orig$_ungrouped$SBBannerContainerViewController$animateTransition$(self, _cmd, tc); return; }
     switcher = !switcher;
     
     _UIBackdropView *bg = [[self bannerContextView] backdrop];
@@ -66,7 +73,7 @@ static BOOL switcher = NO;
     CGFloat iconWidth = 20;
     CGFloat width = bg.frame.size.width / 2;
     
-    %orig;
+    _logos_orig$_ungrouped$SBBannerContainerViewController$animateTransition$(self, _cmd, tc);
     
     UIView *left = [[UIView alloc] initWithFrame:CGRectMake(-width, 0, width, bg.frame.size.height)];
     left.backgroundColor = [UIColor colorWithWhite:0.0 alpha:1.0];
@@ -119,18 +126,21 @@ static BOOL switcher = NO;
     }];
 }
 
-%end
+
 
 
 static void loadPrefs() {
     CFPreferencesAppSynchronize(CFSTR("de.finngaida.twitternotificationanimation"));
     
-    // TODO:  enabled = !CFPreferencesCopyAppValue(CFSTR("enabled"), CFSTR("de.finngaida.twitternotificationanimation")) ? NO : [(__bridge id)CFPreferencesCopyAppValue(CFSTR("enabled"), CFSTR("de.finngaida.twitternotificationanimation")) boolValue];
+    
     
 }
 
-%ctor {
+static __attribute__((constructor)) void _logosLocalCtor_6ea7cce3(int argc, char **argv, char **envp) {
     CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)loadPrefs, CFSTR("de.finngaida.twitternotificationanimation/settingschanged"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
     
     loadPrefs();
 }
+static __attribute__((constructor)) void _logosLocalInit() {
+{Class _logos_class$_ungrouped$SBBannerContainerViewController = objc_getClass("SBBannerContainerViewController"); if (_logos_class$_ungrouped$SBBannerContainerViewController) {if (class_getInstanceMethod(_logos_class$_ungrouped$SBBannerContainerViewController, @selector(animateTransition:))) {MSHookMessageEx(_logos_class$_ungrouped$SBBannerContainerViewController, @selector(animateTransition:), (IMP)&_logos_method$_ungrouped$SBBannerContainerViewController$animateTransition$, (IMP*)&_logos_orig$_ungrouped$SBBannerContainerViewController$animateTransition$);} else {HBLogError(@"logos: message not found [%s %s]", "SBBannerContainerViewController", "animateTransition:");}} else {HBLogError(@"logos: nil class %s", "SBBannerContainerViewController");}} }
+#line 137 "Tweak.xm"

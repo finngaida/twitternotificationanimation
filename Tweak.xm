@@ -46,14 +46,13 @@
 
 
 static BOOL enabled = YES;
-static _UIViewControllerOneToOneTransitionContext *tc;
+static BOOL outgoing = NO;
 
 %hook SBBannerContainerViewController
 
--(void)animateTransition:(id)trc {
+-(void)animateTransition:(id)tc {
     
-    tc = trc;
-    BOOL outgoing = MSHookIvar<UIView *>(tc, "_toView") == nil;
+    outgoing = MSHookIvar<UIView *>(tc, "_toView") == nil;
     
     if(!enabled || outgoing) { %orig; return; }
     
@@ -122,8 +121,6 @@ static _UIViewControllerOneToOneTransitionContext *tc;
 }
 
 -(double)transitionDuration:(id)duration {
-    BOOL outgoing = NO; //MSHookIvar<UIView *>(tc, "_toView") == nil;
-    
     return (outgoing) ? %orig : 0;
 }
 

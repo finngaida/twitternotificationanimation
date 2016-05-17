@@ -68,6 +68,7 @@ static BOOL outgoing = NO;
     
     CGRect origTitle = title.frame;
     CGRect origIcon = icon.frame;
+    UIView *origIconView = icon.superview;
     
     UIView *right = [[UIView alloc] initWithFrame:CGRectMake(width * 2, 0, width, bg.frame.size.height)];
     right.backgroundColor = [UIColor colorWithWhite:0.0 alpha:1.0];
@@ -114,6 +115,8 @@ static BOOL outgoing = NO;
                     grabber.alpha = 1;
                 } completion:^(BOOL finished) {
                     [self bannerContextView].grabberVisible = YES;
+                    [icon removeFromSuperview];
+                    [origIconView addSubview:icon];
                 }];
             }];
         }];

@@ -1,4 +1,4 @@
-TARGET = iphone:latest:7.0
+TARGET = iphone:latest:9.0
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = TwitterNotificationAnimation
@@ -9,3 +9,5 @@ include $(THEOS_MAKE_PATH)/tweak.mk
 
 after-install::
 	install.exec "killall -9 SpringBoard"
+SUBPROJECTS += settings
+include $(THEOS_MAKE_PATH)/aggregate.mk

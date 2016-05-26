@@ -46,13 +46,36 @@
 
 
 static BOOL enabled = YES;
+static BOOL showGrabber = YES;
+static CGFloat speed = 1.0;
 static BOOL outgoing = NO;
+
+static void loadPrefs() {
+    //    CFPreferencesAppSynchronize(CFSTR("de.finngaida.twitternotificationanimation"));
+    //
+    //    enabled = CFPreferencesCopyAppValue(CFSTR("enabled"), CFSTR("de.finngaida.twitternotificationanimation")) ? YES : [(__bridge id)CFPreferencesCopyAppValue(CFSTR("enabled"), CFSTR("de.finngaida.twitternotificationanimation")) boolValue];
+    //    showGrabber = CFPreferencesCopyAppValue(CFSTR("showGrabber"), CFSTR("de.finngaida.twitternotificationanimation")) ? YES : [(__bridge id)CFPreferencesCopyAppValue(CFSTR("showGrabber"), CFSTR("de.finngaida.twitternotificationanimation")) boolValue];
+    //    speed = CFPreferencesCopyAppValue(CFSTR("speed"), CFSTR("de.finngaida.twitternotificationanimation")) ? 1.0 : [(__bridge id)CFPreferencesCopyAppValue(CFSTR("speed"), CFSTR("de.finngaida.twitternotificationanimation")) floatValue];
+    
+    NSMutableDictionary *settings = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/de.finngaida.twitternotificationanimation.plist"];
+    
+    enabled = [settings objectForKey:@"enabled"] ? [[settings objectForKey:@"enabled"] boolValue] : YES;
+    showGrabber = [settings objectForKey:@"showGrabber"] ? [[settings objectForKey:@"showGrabber"] boolValue] : YES;
+    speed = ([settings objectForKey:@"speed"] ? [[settings objectForKey:@"speed"] floatValue] : 100) / 100;
+}
+
+%ctor {
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)loadPrefs, CFSTR("de.finngaida.twitternotificationanimation/settingschanged"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
+    
+    loadPrefs();
+}
 
 %hook SBBannerContainerViewController
 
 -(void)animateTransition:(id)tc {
     
     outgoing = MSHookIvar<UIView *>(tc, "_toView") == nil;
+    loadPrefs();
     
     if(!enabled || outgoing) { %orig; return; }
     
@@ -61,25 +84,23 @@ static BOOL outgoing = NO;
     UIImageView *icon = MSHookIvar<UIImageView *>(contentView, "_iconImageView");
     SBDefaultBannerTextView *title = MSHookIvar<SBDefaultBannerTextView *>(contentView, "_textView");
     UIView *grabber = MSHookIvar<UIView *>([self bannerContextView], "_grabberView");
-    CGFloat iconWidth = 20;
-    CGFloat width = bg.frame.size.width / 2;
     
     %orig;
     
     CGRect origTitle = title.frame;
     CGRect origIcon = icon.frame;
     UIView *origIconView = icon.superview;
+    CGFloat iconWidth = [self bannerContextView].frame.size.height / 2.5;
     
-    UIView *right = [[UIView alloc] initWithFrame:CGRectMake(width * 2, 0, width, bg.frame.size.height)];
-    right.backgroundColor = [UIColor colorWithWhite:0.0 alpha:1.0];
-    [self.view insertSubview:right aboveSubview:bg];
+    if (origIcon.origin.x == 0) {
+        origIcon = CGRectMake(5, origIcon.origin.y, origIcon.size.width, origIcon.size.height);
+    }
     
     bg.alpha = 0;
     bg.frame = CGRectMake(-bg.frame.size.width, bg.frame.origin.y, bg.frame.size.width, bg.frame.size.height);
     
-    [icon removeFromSuperview];
-    [self.view addSubview:icon];
     icon.alpha = 0;
+    [icon removeFromSuperview];
     
     title.alpha = 0;
     title.frame = CGRectMake(origTitle.origin.x + iconWidth * 2, origTitle.origin.y + iconWidth, origTitle.size.width - iconWidth * 4, origTitle.size.height - iconWidth * 2);
@@ -87,34 +108,37 @@ static BOOL outgoing = NO;
     [self bannerContextView].grabberVisible = NO;
     grabber.alpha = 0;
     
-    [UIView animateWithDuration:0.3 animations:^{
-        right.frame = CGRectMake(width, right.frame.origin.y, right.frame.size.width, right.frame.size.height);
-        right.alpha = 0.5;
+    [UIView animateWithDuration:0.3 * speed animations:^{
         
         bg.frame = CGRectMake(0, bg.frame.origin.y, bg.frame.size.width, bg.frame.size.height);
         bg.alpha = 1;
         
     } completion:^(BOOL finished) {
         
-        [right removeFromSuperview];
         icon.frame = CGRectMake(bg.frame.size.width / 2, bg.frame.size.height / 2, 0, 0);
+        [self.view addSubview:icon];
         
-        [UIView animateWithDuration:0.2 animations:^{
+        [UIView animateWithDuration:0.2 * speed delay:0.0 usingSpringWithDamping:0.5 initialSpringVelocity:0.0 options:nil animations:^{
             icon.frame = CGRectMake(bg.frame.size.width / 2 - iconWidth / 2, bg.frame.size.height / 2 - iconWidth / 2, iconWidth, iconWidth);
             icon.alpha = 1;
         } completion:^(BOOL finished) {
             
-            [UIView animateWithDuration:0.5 animations:^{
-                //                icon.frame = CGRectMake(iconWidth / 2, icon.frame.origin.y, iconWidth, iconWidth);
+            [UIView animateWithDuration:0.5 * speed animations:^{
                 icon.frame = origIcon;
+                
             } completion:^(BOOL finished) {
                 
-                [UIView animateWithDuration:0.5 animations:^{
+                [UIView animateWithDuration:0.5 * speed animations:^{
+                    icon.frame = origIcon;
                     title.frame = origTitle;
                     title.alpha = 1;
                     grabber.alpha = 1;
                 } completion:^(BOOL finished) {
-                    [self bannerContextView].grabberVisible = YES;
+                    
+                    if (showGrabber) {
+                        [self bannerContextView].grabberVisible = YES;
+                    }
+                    
                     [icon removeFromSuperview];
                     [origIconView addSubview:icon];
                 }];
@@ -124,7 +148,11 @@ static BOOL outgoing = NO;
 }
 
 -(double)transitionDuration:(id)duration {
-    return (outgoing) ? %orig : 0;
+    if (enabled) {
+        return (outgoing) ? %orig : 0;
+    } else {
+        return %orig;
+    }
 }
 
 %end
@@ -138,16 +166,3 @@ static BOOL outgoing = NO;
 
 %end
 
-
-static void loadPrefs() {
-    CFPreferencesAppSynchronize(CFSTR("de.finngaida.twitternotificationanimation"));
-    
-    // TODO:  enabled = !CFPreferencesCopyAppValue(CFSTR("enabled"), CFSTR("de.finngaida.twitternotificationanimation")) ? NO : [(__bridge id)CFPreferencesCopyAppValue(CFSTR("enabled"), CFSTR("de.finngaida.twitternotificationanimation")) boolValue];
-    
-}
-
-%ctor {
-    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)loadPrefs, CFSTR("de.finngaida.twitternotificationanimation/settingschanged"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
-    
-    loadPrefs();
-}

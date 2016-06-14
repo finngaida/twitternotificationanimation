@@ -1,0 +1,371 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		C55B79941D05A62D00A02865 /* THEOS */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = C55B79951D05A62D00A02865 /* Build configuration list for PBXAggregateTarget "THEOS" */;
+			buildPhases = (
+				C55B79981D05A63500A02865 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = THEOS;
+			productName = THEOS;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		C55B797D1D05A4B000A02865 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B797C1D05A4B000A02865 /* main.m */; };
+		C55B79801D05A4B000A02865 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B797F1D05A4B000A02865 /* AppDelegate.m */; };
+		C55B79831D05A4B000A02865 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B79821D05A4B000A02865 /* ViewController.m */; };
+		C55B79861D05A4B000A02865 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C55B79841D05A4B000A02865 /* Main.storyboard */; };
+		C55B79881D05A4B000A02865 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C55B79871D05A4B000A02865 /* Assets.xcassets */; };
+		C55B798B1D05A4B000A02865 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C55B79891D05A4B000A02865 /* LaunchScreen.storyboard */; };
+		C55B79931D05A4E700A02865 /* Tweak.mm in Sources */ = {isa = PBXBuildFile; fileRef = C55B79921D05A4E700A02865 /* Tweak.mm */; };
+		C55B799A1D05A6AB00A02865 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = C55B79991D05A6AB00A02865 /* Makefile */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C55B79781D05A4B000A02865 /* TwitterNotificationAnimationXcode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterNotificationAnimationXcode.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C55B797C1D05A4B000A02865 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C55B797E1D05A4B000A02865 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C55B797F1D05A4B000A02865 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C55B79811D05A4B000A02865 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C55B79821D05A4B000A02865 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C55B79851D05A4B000A02865 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C55B79871D05A4B000A02865 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C55B798A1D05A4B000A02865 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C55B798C1D05A4B000A02865 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C55B79921D05A4E700A02865 /* Tweak.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Tweak.mm; path = ../../Tweak.mm; sourceTree = "<group>"; };
+		C55B79991D05A6AB00A02865 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = ../../Makefile; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C55B79751D05A4B000A02865 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C55B796F1D05A4B000A02865 = {
+			isa = PBXGroup;
+			children = (
+				C55B797A1D05A4B000A02865 /* TwitterNotificationAnimationXcode */,
+				C55B79791D05A4B000A02865 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C55B79791D05A4B000A02865 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C55B79781D05A4B000A02865 /* TwitterNotificationAnimationXcode.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C55B797A1D05A4B000A02865 /* TwitterNotificationAnimationXcode */ = {
+			isa = PBXGroup;
+			children = (
+				C55B79991D05A6AB00A02865 /* Makefile */,
+				C55B79921D05A4E700A02865 /* Tweak.mm */,
+				C55B797E1D05A4B000A02865 /* AppDelegate.h */,
+				C55B797F1D05A4B000A02865 /* AppDelegate.m */,
+				C55B79811D05A4B000A02865 /* ViewController.h */,
+				C55B79821D05A4B000A02865 /* ViewController.m */,
+				C55B79841D05A4B000A02865 /* Main.storyboard */,
+				C55B79871D05A4B000A02865 /* Assets.xcassets */,
+				C55B79891D05A4B000A02865 /* LaunchScreen.storyboard */,
+				C55B798C1D05A4B000A02865 /* Info.plist */,
+				C55B797B1D05A4B000A02865 /* Supporting Files */,
+			);
+			path = TwitterNotificationAnimationXcode;
+			sourceTree = "<group>";
+		};
+		C55B797B1D05A4B000A02865 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C55B797C1D05A4B000A02865 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C55B79771D05A4B000A02865 /* TwitterNotificationAnimationXcode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C55B798F1D05A4B000A02865 /* Build configuration list for PBXNativeTarget "TwitterNotificationAnimationXcode" */;
+			buildPhases = (
+				C55B79741D05A4B000A02865 /* Sources */,
+				C55B79751D05A4B000A02865 /* Frameworks */,
+				C55B79761D05A4B000A02865 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TwitterNotificationAnimationXcode;
+			productName = TwitterNotificationAnimationXcode;
+			productReference = C55B79781D05A4B000A02865 /* TwitterNotificationAnimationXcode.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C55B79701D05A4B000A02865 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Finn Gaida";
+				TargetAttributes = {
+					C55B79771D05A4B000A02865 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					C55B79941D05A62D00A02865 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = C55B79731D05A4B000A02865 /* Build configuration list for PBXProject "TwitterNotificationAnimationXcode" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C55B796F1D05A4B000A02865;
+			productRefGroup = C55B79791D05A4B000A02865 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C55B79771D05A4B000A02865 /* TwitterNotificationAnimationXcode */,
+				C55B79941D05A62D00A02865 /* THEOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C55B79761D05A4B000A02865 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C55B798B1D05A4B000A02865 /* LaunchScreen.storyboard in Resources */,
+				C55B79881D05A4B000A02865 /* Assets.xcassets in Resources */,
+				C55B79861D05A4B000A02865 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C55B79981D05A63500A02865 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd ../\nmake package install";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C55B79741D05A4B000A02865 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C55B799A1D05A6AB00A02865 /* Makefile in Sources */,
+				C55B79931D05A4E700A02865 /* Tweak.mm in Sources */,
+				C55B79831D05A4B000A02865 /* ViewController.m in Sources */,
+				C55B79801D05A4B000A02865 /* AppDelegate.m in Sources */,
+				C55B797D1D05A4B000A02865 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C55B79841D05A4B000A02865 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C55B79851D05A4B000A02865 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C55B79891D05A4B000A02865 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C55B798A1D05A4B000A02865 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C55B798D1D05A4B000A02865 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C55B798E1D05A4B000A02865 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C55B79901D05A4B000A02865 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TwitterNotificationAnimationXcode/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.finngaida.TwitterNotificationAnimationXcode;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C55B79911D05A4B000A02865 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TwitterNotificationAnimationXcode/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.finngaida.TwitterNotificationAnimationXcode;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C55B79961D05A62D00A02865 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C55B79971D05A62D00A02865 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C55B79731D05A4B000A02865 /* Build configuration list for PBXProject "TwitterNotificationAnimationXcode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C55B798D1D05A4B000A02865 /* Debug */,
+				C55B798E1D05A4B000A02865 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C55B798F1D05A4B000A02865 /* Build configuration list for PBXNativeTarget "TwitterNotificationAnimationXcode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C55B79901D05A4B000A02865 /* Debug */,
+				C55B79911D05A4B000A02865 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C55B79951D05A62D00A02865 /* Build configuration list for PBXAggregateTarget "THEOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C55B79961D05A62D00A02865 /* Debug */,
+				C55B79971D05A62D00A02865 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C55B79701D05A4B000A02865 /* Project object */;
+}

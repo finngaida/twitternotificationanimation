@@ -108,6 +108,16 @@
 			<key>label</key>
 			<string>Send a feature request</string>
 		</dict>
+		<dict>
+			<key>action</key>
+			<string>paypal</string>
+			<key>icon</key>
+			<string>paypal.png</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Send a donation</string>
+		</dict>
 	</array>
 	<key>title</key>
 	<string>TwitterNotificationAnimation</string>

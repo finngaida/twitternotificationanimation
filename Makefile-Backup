@@ -1,0 +1,15 @@
+TARGET = iphone:latest:9.0  #simulator:clang:latest:9.0 #
+include $(THEOS)/makefiles/common.mk
+
+TWEAK_NAME = TwitterNotificationAnimation
+TwitterNotificationAnimation_FILES = Tweak.xm
+TwitterNotificationAnimation_FRAMEWORKS = UIKit Foundation CoreGraphics
+#TwitterNotificationAnimation_USE_SUBSTRATE = 0
+
+include $(THEOS_MAKE_PATH)/tweak.mk
+
+after-install::
+#install.exec "xcrun simctl spawn booted launchctl debug system/com.apple.SpringBoard --environment DYLD_INSERT_LIBRARIES=.theos/obj/debug/TwitterNotificationAnimation.dylib;xcrun simctl spawn booted launchctl stop com.apple.SpringBoard"
+    install.exec "killall -9 SpringBoard"
+SUBPROJECTS += settings
+include $(THEOS_MAKE_PATH)/aggregate.mk

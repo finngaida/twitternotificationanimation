@@ -1,9 +1,10 @@
 Package: de.finngaida.twitternotificationanimation
 Name: TwitterNotificationAnimation
 Depends: mobilesubstrate
-Version: 0.0.1
+Version: 1.2.1
 Architecture: iphoneos-arm
 Description: Use the Twitter in-app animation for global notifications
+Depiction: http://finngaida.de/repo/depictions/de.finngaida.twitternotificationanimation/
 Maintainer: Finn Gaida
 Author: Finn Gaida
 Section: Tweaks
